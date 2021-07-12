@@ -1,0 +1,66 @@
+Widgt: #:kivy
+<Widgt>:
+   BoxLayout:
+      orientation:'vertical'
+      Label:
+         font_size:30
+         text:"enter a text to be translated"
+         pos_hint:{'center_x':0.5,'center_y':0}
+      TextInput:
+         id: text
+         pos_hint:{"center_x":0.5, "center_y":0}
+         size_hint: (None, None)
+         font_size:20   
+         size:"400dp","200dp" 
+      Roundedbtn:
+         id:mic
+         text:"mic"
+         pos_hint:{"center_x":0.5, "center_y":0.1}
+         size_hint:(0.27,0.4)
+      Roundedspinner:
+         id: spi_lang
+         text: "chose a language"
+         size_hint:(0.5,0.5)
+         font_size:18
+         pos_hint:{"center_x":0.5, "center_y":0}
+         values: 'frensh','arabic','english','spanish','deutsch','portugese'
+         on_text: root.translate(text.text,spi_lang.text)
+      Label:
+         id: output
+         font_name:"arial"
+         text : ""
+         font_size:24
+      Roundedbtn:
+         text:'SPEECH'
+         id:speech_btn
+         pos_hint:{"center_x":0.5, "center_y":0.5}
+         size_hint:(0.27,0.4)
+         on_press: root.play(text.text,spi_lang.text)
+
+
+
+<Roundedbtn@Button>
+   background_color: (0,0,0,0)
+   background_normal: ''
+   canvas.before:
+      Color:
+         rgba:(45/255,80/255,120/255,0.75)
+      RoundedRectangle:
+         size: self.size
+         pos :self.pos
+         radius: [15]
+<Roundedspinner@Spinner>
+   background_color: (0,0,0,0)
+   # background_normal: ''
+   canvas.after:
+      Color:
+         rgba:(0/255,200/255,255/255,0.45)
+      RoundedRectangle:
+         size: self.size
+         pos : self.pos
+         radius: [10]
+
+        
+      
+      
+      
